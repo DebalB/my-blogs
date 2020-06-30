@@ -518,6 +518,9 @@ This is because visible light is a mix of multiple colors, with each color havin
             <span class="n">vis_width</span> <span class="o">=</span> <span class="n">displayWidth</span>
             <span class="n">vis_height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">displayWidth</span><span class="o">*</span><span class="n">im_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">im_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="n">visframes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">capture_vis</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">capture_vis</span> <span class="o">=</span> <span class="kc">False</span>
             
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Begin processing image file... this may take a few minutes&quot;</span><span class="p">)</span>
         <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -545,7 +548,7 @@ This is because visible light is a mix of multiple colors, with each color havin
                   <span class="c1"># only take characters within max range and append to output list</span>
                   <span class="n">text_bin</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">int_val</span><span class="p">)</span>
 
-                  <span class="k">if</span> <span class="n">visualize</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span><span class="p">:</span>
+                  <span class="k">if</span> <span class="n">capture_vis</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
                     <span class="c1"># visualize the extraction process</span>
                     <span class="k">try</span><span class="p">:</span>
                       <span class="n">xpos</span> <span class="o">=</span> <span class="p">(</span><span class="n">j</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span> <span class="o">%</span> <span class="n">im_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -577,10 +580,14 @@ This is because visible light is a mix of multiple colors, with each color havin
 
                       <span class="n">stack_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">stack_img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2BGR</span><span class="p">)</span>
                       <span class="n">visframes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stack_img</span><span class="p">)</span>
+                        
+                      <span class="k">if</span> <span class="n">ypos</span> <span class="o">&gt;=</span> <span class="n">im_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                        <span class="n">capture_vis</span> <span class="o">=</span> <span class="kc">False</span>
                       
                     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!! Visualization error:&quot;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
                         <span class="n">visualize</span> <span class="o">=</span> <span class="s1">&#39;false&#39;</span>
+                        <span class="n">capture_vis</span> <span class="o">=</span> <span class="kc">False</span>
                   
                   <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
                   
@@ -841,7 +848,7 @@ This is because visible light is a mix of multiple colors, with each color havin
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total time taken for Insert operation: 0.73s
+<pre>Total time taken for Insert operation: 0.72s
 </pre>
 </div>
 </div>
@@ -942,9 +949,9 @@ This is because visible light is a mix of multiple colors, with each color havin
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Begin processing image file... this may take a few minutes
-Finished processing image file... time taken: 17.35s
+Finished processing image file... time taken: 17.37s
 Begin saving visualization file... this may take a few minutes
-Finished saving visualization file... time taken: 45.10s
+Finished saving visualization file... time taken: 45.79s
 </pre>
 </div>
 </div>
@@ -1010,7 +1017,7 @@ And enterprises of great pitch and moment
 With this regard their currents turn awry
 And lose the name of action.
 ===================================
-Total time taken for extraction: 63.09s
+Total time taken for extraction: 63.80s
 </pre>
 </div>
 </div>
