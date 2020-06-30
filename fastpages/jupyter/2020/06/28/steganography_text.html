@@ -187,7 +187,7 @@ This is because visible light is a mix of multiple colors, with each color havin
 <p>A typical representation of color images is the <strong>RGB (Red,Green,Blue)</strong> format, where the value of every pixel in the image is described as a combination of 3 values, i.e. one value for each of the 3 primary components <strong>R, G and B</strong>.</p>
 <p>These 3 components or channels, when combined together, determine the actual color of each pixel in the image.</p>
 <p>Thus a digital image is represented in 3 spatial dimensions instead of 2 i.e. height, width and channels or  in short <strong>HxWxC</strong></p>
-<p>In the following illustration of an image, the smallest squares represent pixels and the big colored squares represent each of the 3 channels R, G and B.</p>
+<p>In the following illustration of an image, the small boxes represent pixels and the big colored squares stacked together represent each of the 3 channels R, G and B.</p>
 <p><img src="/my-blogs/images/copied_from_nb/../images/rgb_image.png" alt="" /></p>
 <p>The core idea behind this implementation is actually quite simple and the key aspects are as follows:</p>
 <ul>
@@ -228,6 +228,13 @@ This is because visible light is a mix of multiple colors, with each color havin
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We start with importing the libraries we need and setting the plot mode for <code>inline</code> display</p>
+<p><strong>Note: To run this Jupyter notebook on your local machine please ensure you have the following dependencies installed as a precondition:</strong></p>
+<ul>
+<li>cv2</li>
+<li>imutils</li>
+<li>matplotlib</li>
+<li>ffmpeg</li>
+</ul>
 
 </div>
 </div>
@@ -834,7 +841,7 @@ This is because visible light is a mix of multiple colors, with each color havin
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total time taken for Insert operation: 0.70s
+<pre>Total time taken for Insert operation: 0.73s
 </pre>
 </div>
 </div>
@@ -935,9 +942,9 @@ This is because visible light is a mix of multiple colors, with each color havin
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Begin processing image file... this may take a few minutes
-Finished processing image file... time taken: 16.71s
+Finished processing image file... time taken: 17.35s
 Begin saving visualization file... this may take a few minutes
-Finished saving visualization file... time taken: 43.93s
+Finished saving visualization file... time taken: 45.10s
 </pre>
 </div>
 </div>
@@ -1003,7 +1010,7 @@ And enterprises of great pitch and moment
 With this regard their currents turn awry
 And lose the name of action.
 ===================================
-Total time taken for extraction: 61.25s
+Total time taken for extraction: 63.09s
 </pre>
 </div>
 </div>
